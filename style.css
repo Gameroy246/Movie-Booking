@@ -1,0 +1,162 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+.nav {
+  background-color: #333;
+  padding: 1rem 0;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.logo {
+  width: 100px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-grow: 1;
+  margin: 0 2rem;
+}
+
+.city-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #f84464;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.city-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.search-container {
+  display: flex;
+  flex-grow: 1;
+  max-width: 600px;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background-color: #f84464;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
+
+.sign {
+  color: #fff;
+  background-color: #f84464;
+  border-radius: 5px;
+  border: 0;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.margin {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.trending h2 {
+  margin-top: 2rem;
+  color: #333;
+}
+
+.movies {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+.mov {
+  flex: 0 0 auto;
+  width: 200px;
+  text-align: center;
+}
+
+.clickable {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.clickable:hover {
+  transform: scale(1.05);
+}
+
+.mov p {
+  margin-top: 0.5rem;
+  color: #333;
+}
+
+.mov a {
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .nav-content {
+      flex-direction: column;
+      align-items: stretch;
+  }
+
+  .nav-links {
+      flex-direction: column;
+      margin: 1rem 0;
+  }
+
+  .search-container {
+      max-width: 100%;
+  }
+}
