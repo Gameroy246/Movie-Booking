@@ -1,1 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Booking Site</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <img src="logo.jpg" alt="Site Logo" class="logo">
+            <div class="nav-links">
+                <div class="city-dropdown">
+                    <button id="cityBtn" class="dropbtn">Select City</button>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="selectCity('Mumbai')">Mumbai</a>
+                        <a href="#" onclick="selectCity('Delhi')">Delhi</a>
+                        <a href="#" onclick="selectCity('Bangalore')">Bangalore</a>
+                        <a href="#" onclick="selectCity('Chennai')">Chennai</a>
+                        <a href="#" onclick="selectCity('Kolkata')">Kolkata</a>
+                    </div>
+                </div>
+                <div class="search-container">
+                    <input type="text" placeholder="Search for movies, events, plays, sports and activities" class="search-input">
+                    <button type="submit" class="search-button">Search</button>
+                </div>
+            </div>
+            <button class="sign">Sign In</button>
+        </div>
+    </nav>
 
+    <section class="trending">
+        <h2>Trending</h2>
+        <div class="movies">
+            <div class="mov">
+                <a href="stree.html">
+                    <img src="stree_poster.jpg" alt="Stree Movie" class="clickable">
+                    <p>Stree</p>
+                </a>
+            </div>
+            <div class="mov">
+                <a href="joker.html">
+                    <img src="joker.jpg" alt="Stree Movie" class="clickable">
+                    <p>Joker</p>
+                </a>
+            </div>
+            <div class="mov">
+                <a href="stree.html">
+                    <img src="stree_poster.jpg" alt="Stree Movie" class="clickable">
+                    <p>Stree</p>
+                </a>
+            </div>
+            <div class="mov">
+                <a href="stree.html">
+                    <img src="stree_poster.jpg" alt="Stree Movie" class="clickable">
+                    <p>Stree</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function selectCity(city) {
+            document.getElementById('cityBtn').textContent = city;
+        }
+    </script>
+</body>
+</html>
