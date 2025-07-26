@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stree - MoviePulse</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .navbar-brand img {
+            height: 40px;
+        }
+        .movie-poster img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .movie-info {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .booking-form {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .btn-book {
+            background-color: #e50914;
+            border-color: #e50914;
+        }
+        .btn-book:hover {
+            background-color: #b2070f;
+            border-color: #b2070f;
+        }
+        /* Page Loader */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #e50914;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.jpg" alt="MoviePulse Logo" class="d-inline-block align-text-top">
+                MoviePulse
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="cityDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-map-marker-alt"></i> Select City
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="cityDropdown">
+                            <li><a class="dropdown-item" href="#" onclick="selectCity('Mumbai')">Mumbai</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="selectCity('Delhi')">Delhi</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="selectCity('Bangalore')">Bangalore</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="selectCity('Chennai')">Chennai</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="selectCity('Kolkata')">Kolkata</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex me-2">
+                    <input class="form-control me-2" type="search" placeholder="Search movies..." aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+                <button class="btn btn-outline-light"><i class="fas fa-user"></i> Sign In</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Movie Details Section -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="movie-poster">
+                    <img src="stree_poster.jpg" alt="Stree Movie Poster" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="movie-info mb-4">
+                    <h1 class="mb-3">Stree</h1>
+                    <p class="text-muted">2h 10min • Horror, Comedy • UA</p>
+                    <p class="mb-4">The people of Chanderi live under constant fear of Stree, the spirit of a woman who attacks men at night during festivals. Vicky, along with his friends, decides to unravel the mystery.</p>
+                    <p><strong>Cast:</strong> Rajkummar Rao, Shraddha Kapoor, Pankaj Tripathi</p>
+                </div>
+                <div class="booking-form">
+                    <h2 class="mb-4">Book Tickets</h2>
+                    <form>
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Select Date:</label>
+                            <input type="date" class="form-control" id="date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="time" class="form-label">Select Time:</label>
+                            <select class="form-select" id="time" required>
+                                <option value="">Choose a time</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="16:00">4:00 PM</option>
+                                <option value="19:00">7:00 PM</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tickets" class="form-label">Number of Tickets:</label>
+                            <input type="number" class="form-control" id="tickets" min="1" max="10" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-book">Book Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About MoviePulse</h5>
+                    <p>Your go-to platform for booking movie tickets and discovering the latest films.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">Home</a></li>
+                        <li><a href="#" class="text-light">Movies</a></li>
+                        <li><a href="#" class="text-light">Cinemas</a></li>
+                        <li><a href="#" class="text-light">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#" class="text-light me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4">
+            <div class="text-center">
+                <p>&copy; 2023 MoviePulse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        function selectCity(city) {
+            console.log('Selected city:', city);
+            // Add logic to update the UI or make API calls based on the selected city
+        }
+
+        // Page Loader
+        window.addEventListener('load', function() {
+            const loader = document.querySelector('.loader-wrapper');
+            loader.classList.add('fade-out');
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
